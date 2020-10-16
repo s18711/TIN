@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2e3c86-71a4-4933-b280-015884561028" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/asignment 1/disk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asignment 1/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment B/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asignment A/disk.png" beforeDir="false" afterPath="$PROJECT_DIR$/assignment A/disk.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asignment A/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/assignment A/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +23,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1ixZElwQ7i9zEQGEF7SAA6PS87T" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -46,7 +50,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602851094125</updated>
-      <workItem from="1602851095350" duration="1228000" />
+      <workItem from="1602851095350" duration="2374000" />
     </task>
     <servers />
   </component>
