@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2e3c86-71a4-4933-b280-015884561028" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assignmet C/disk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assignmet C/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assignmet C/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignmet D/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignmet D/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,12 +34,13 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assignmet C" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assignmet D" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hitma\Desktop\TIN\tutorial_1and2\assignmet D" />
       <recent name="C:\Users\hitma\Desktop\TIN\tutorial_1and2\assignmet C" />
       <recent name="C:\Users\hitma\Desktop\TIN\tutorial_1and2\asignment 1" />
     </key>
@@ -53,11 +53,35 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602851094125</updated>
-      <workItem from="1602851095350" duration="3294000" />
+      <workItem from="1602851095350" duration="3919000" />
     </task>
+    <task id="LOCAL-00001" summary="added assignment C">
+      <created>1602854575902</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602854575902</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="added assignment C" />
+    <option name="LAST_COMMIT_MESSAGE" value="added assignment C" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1062" y="1" key="CommitChangelistDialog2" timestamp="1602854574692">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1062" y="1" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1602854574692" />
+    <state x="1031" y="237" key="Vcs.Push.Dialog.v2" timestamp="1602854582443">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1031" y="237" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602854582443" />
   </component>
 </project>
