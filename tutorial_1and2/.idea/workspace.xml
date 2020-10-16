@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2e3c86-71a4-4933-b280-015884561028" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assignment B/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignmet C/disk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignmet C/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignmet C/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asignment A/disk.png" beforeDir="false" afterPath="$PROJECT_DIR$/assignment A/disk.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asignment A/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/assignment A/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +16,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -34,11 +35,13 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/asignment 1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assignmet C" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hitma\Desktop\TIN\tutorial_1and2\assignmet C" />
       <recent name="C:\Users\hitma\Desktop\TIN\tutorial_1and2\asignment 1" />
     </key>
   </component>
@@ -50,7 +53,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602851094125</updated>
-      <workItem from="1602851095350" duration="2374000" />
+      <workItem from="1602851095350" duration="3294000" />
     </task>
     <servers />
   </component>

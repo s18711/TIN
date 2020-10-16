@@ -1,0 +1,18 @@
+p{
+    font-size: 25px;
+    font-style: italic;
+}
+h1{
+    font-style: oblique;
+    font-size: 3em;
+}
+table, th, td {
+    border: 1px solid black;
+}
+a{
+    text-decoration: none;
+
+}
+ul{
+    list-style-type: armenian;
+}
