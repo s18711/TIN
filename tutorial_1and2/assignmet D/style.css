@@ -1,5 +1,23 @@
+
+label{
+    color: green;
+    font-size: 2em;
+}
+
 .required:after {
     content:" *";
 
     color: red;
+
 }
+
+.required{
+    color: red;
+}
+
+input{
+    font-size: large;
+    color: blue;
+    border: 1px solid black;
+}
+

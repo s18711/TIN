@@ -1,0 +1,38 @@
+#center{
+    margin: auto;
+    margin-top: 40px;
+    width: 500px;
+    background: white;
+    overflow: auto;
+    padding: 10px;
+}
+
+#left{
+    width: 200px;
+    float: left;
+
+}
+
+#right{
+    width: 200px;
+    float: right;
+}
+#img1{
+    float: left;
+}
+
+#img2 {
+    float: right;
+}
+#img3 {
+    float: left;
+    clear: both;
+    
+}
+body{
+background: blanchedalmond}
+
+#img4{
+    float: left;
+    clear: both;
+}

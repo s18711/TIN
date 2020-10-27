@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2e3c86-71a4-4933-b280-015884561028" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assignmet D/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assignmet D/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment E/arrow_redo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment E/disk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment E/find.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment E/folder_page.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment E/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment E/page.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment E/plan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment E/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment F/Lorem-Ipsum-alternatives.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment F/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment F/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignmet D/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/assignmet D/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignmet D/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assignmet D/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +45,16 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assignmet D" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assignment E" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\hitma\Desktop\TIN\tutorial_1and2\assignment F" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hitma\Desktop\TIN\tutorial_1and2\assignment E" />
       <recent name="C:\Users\hitma\Desktop\TIN\tutorial_1and2\assignmet D" />
       <recent name="C:\Users\hitma\Desktop\TIN\tutorial_1and2\assignmet C" />
       <recent name="C:\Users\hitma\Desktop\TIN\tutorial_1and2\asignment 1" />
@@ -54,6 +69,14 @@
       <option name="presentableId" value="Default" />
       <updated>1602851094125</updated>
       <workItem from="1602851095350" duration="3919000" />
+      <workItem from="1602864747027" duration="686000" />
+      <workItem from="1603017813168" duration="81000" />
+      <workItem from="1603098925863" duration="25000" />
+      <workItem from="1603116529189" duration="2302000" />
+      <workItem from="1603202047242" duration="3950000" />
+      <workItem from="1603360680909" duration="527000" />
+      <workItem from="1603720421590" duration="670000" />
+      <workItem from="1603789305091" duration="3337000" />
     </task>
     <task id="LOCAL-00001" summary="added assignment C">
       <created>1602854575902</created>
