@@ -1,18 +1,24 @@
 body{
     background: lightslategrey;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
 }
 h1{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 0.3fr;
     align-self: center;
-    justify-content: center;
+justify-self: center
 }
-
+#headerImage{
+    width: 300px;
+    height: 200px;
+    border-radius: 30px;
+    transform: rotate(5deg);
+    box-shadow: 10px 10px;
+}
 #content{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
     margin: 50px 200px 200px 50px;
 }
 
@@ -29,29 +35,21 @@ h1{
         columns: 1;
     }
 }
-@media only screen and (max-width: 800px){
-#content{
-    display: flex;
-    flex-direction: column;
-}
-#galeryOnTheLeft{
-    order: 2;
-}
+@media only screen and (max-width: 800px) {
+    #content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #galeryOnTheLeft {
+        order: 2;
+    }
 }
 #deer{
     float: left;
     margin: 5px;
-   height: 250px;
+    height: 250px;
     width: 250px;
-}
-
-#headerImage{
-    width: 300px;
-    height: 200px;
-    border-radius: 30px;
-    transform: rotate(5deg);
-    box-shadow: 10px 10px;
-
 }
 
 .pquote {
