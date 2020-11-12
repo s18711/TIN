@@ -4,7 +4,7 @@ const binarySearch =  (arr, xToBeFound, left, right) => {
 
     if (left > right)
         return false;
-
+1
     let mid = Math.floor((left + right)/2);
 
     if (arr[mid]===xToBeFound) return `index of ${xToBeFound} : ${mid}`;
