@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2e3c86-71a4-4933-b280-015884561028" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../JavaScriptInBrowser/assignmentA/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaScriptInBrowser/assignmentA/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JsContinued/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JsContinued/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JavaScriptInBrowser/assignment B/b.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JavaScriptInBrowser/assignment B/b.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JavaScriptInBrowser/assignment C/c.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JavaScriptInBrowser/assignment C/c.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JavaScriptInBrowser/assignment C/x.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JavaScriptInBrowser/assignment D/d.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JavaScriptInBrowser/assignment D/d.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaScriptInBrowser/assignmentA/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaScriptInBrowser/assignmentA/a.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaScriptInBrowser/assignmentA/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaScriptInBrowser/assignmentA/a.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
