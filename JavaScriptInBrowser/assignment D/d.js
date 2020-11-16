@@ -5,7 +5,10 @@ function myFunction() {
     const row = table.insertRow(0);
     for (let i = 0; i < numberOfCellsAdded; i++){
         let cell = row.insertCell(i);
-        cell.innerHTML = content[i];
+        if(content[i] !== undefined)
+         cell.innerHTML = content[i];
+        else
+            cell.innerHTML = ""
     }
 
 }
