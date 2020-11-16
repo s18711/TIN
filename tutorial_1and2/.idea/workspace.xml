@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2e3c86-71a4-4933-b280-015884561028" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Tutorial3/Assignment A/Lorem-Ipsum-alternatives.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tutorial3/Assignment A/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tutorial3/Assignment A/pobrane (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tutorial3/Assignment A/pobrane (2).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tutorial3/Assignment A/pobrane.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tutorial3/Assignment A/quote.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tutorial3/Assignment A/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JavaScriptInBrowser/assignmentA/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JavaScriptInBrowser/assignmentA/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JsContinued/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JsContinued/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +35,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assignment E" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -76,6 +72,7 @@
       <workItem from="1604062782015" duration="107000" />
       <workItem from="1604146441481" duration="1301000" />
       <workItem from="1604233108362" duration="90000" />
+      <workItem from="1605536051225" duration="614000" />
     </task>
     <task id="LOCAL-00001" summary="added assignment C">
       <created>1602854575902</created>
