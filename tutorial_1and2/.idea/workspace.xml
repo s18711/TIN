@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2e3c86-71a4-4933-b280-015884561028" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../JavaScriptInBrowser/assignment D/d.html" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaScriptInBrowser/assignment D/d.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +70,7 @@
       <workItem from="1604146441481" duration="1301000" />
       <workItem from="1604233108362" duration="90000" />
       <workItem from="1605536051225" duration="614000" />
+      <workItem from="1605638236341" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="added assignment C">
       <created>1602854575902</created>
