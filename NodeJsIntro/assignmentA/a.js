@@ -13,7 +13,6 @@ const server = http.createServer((req, res) => {
 });
 
 function performMathOperation(pathname, number1, number2, res) {
-    let sum = 0;
 
     if (number1 === undefined || number2 === undefined) {
         res.end('No parameters were passed \nthe request should be in form of  http://127.0.0.1:1337/"operation"?number1="X"&number2="Y"');
@@ -27,6 +26,8 @@ function performMathOperation(pathname, number1, number2, res) {
         res.end('Wrong types, parameters must be of type "number"\n the request should be in form of  http://127.0.0.1:1337/"operation"?number1="X"&number2="Y"');
         return;
     }
+
+    let sum = 0;
 
     switch (pathname) {
         case "\/add":
@@ -45,7 +46,6 @@ function performMathOperation(pathname, number1, number2, res) {
             sum = number1Parsed / number2Parsed;
             break;
     }
-    console.log(sum);
 
     res.end(`the result of your operation is: ${sum}`);
 }
