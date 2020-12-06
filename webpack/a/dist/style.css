@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: 50px;
+}
+.upperDiv{
+    display: flex;
+    align-content: center;
+    align-self: center;
+    margin: 50px 0px 20px 0px;
+}
+
+.lowerDiv{
+    display: flex;
+    align-self: center;
+    align-content: center;
+}
+
+#tempOut{
+    margin: 0px 0px 0px 10px;
+}
+#DistOut{
+    margin: 0px 0px 0px 10px;
+
+}
+button{
+    margin: 30px 800px 0px 800px;
+}
+label{
+    margin-right: 5px;
+}
+
+select{
+    margin-right: 10px;
+}

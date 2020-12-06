@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div id="divTempIn" class="upperDiv">
+    <label for="tempSelIn">Input in:  </label>
+    <select id="tempSelIn" name="tempsIn">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="kelvin">Kelvin</option>
+    </select>
+    <input type="number" id="tempIn">
+
+</div>
+
+<div id="divTempOut" class="lowerDiv">
+    <label for="tempSelOut">Output in:  </label>
+    <select id="tempSelOut" name="tempsOut">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="kelvin">Kelvin</option>
+    </select>
+    <div id="tempOut">...</div>
+
+</div>
+
+<button id="tempButton"> CalculateTemp </button>
+
+<div id="divDistIn" class="upperDiv">
+    <label for="distSetIn">Input in:  </label>
+    <select id="distSetIn" name="distancesIN">
+        <option value="Kilometers">Kilometers</option>
+        <option value="Miles">Miles</option>
+    </select>
+    <input type="number" id="distIn">
+
+</div>
+
+<div id="divDistOut" class="lowerDiv">
+    <label for="distSetOut">Output in:  </label>
+    <select id="distSetOut" name="distancesOut">
+        <option value="Kilometers">Kilometers</option>
+        <option value="Miles">Miles</option>
+=    </select>
+    <div id="DistOut">...</div>
+
+</div>
+
+<button id="distButton"> CalculateDist </button>
+<script src="main.js"></script>
+
+</body>
+</html>
