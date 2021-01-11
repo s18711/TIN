@@ -1,0 +1,45 @@
+create table shop_transaction(
+    id_transaction int auto_increment primary key ,
+    id_employee int not null ,
+    id_item int not null ,
+    transaction_date date not null ,
+    foreign key (id_employee) references employees(id_employee) on delete cascade,
+    foreign key (id_item) references shop_item(id_item) on delete cascade
+);
+
+
+create table employees
+(
+    id_employee       int auto_increment
+        primary key,
+    employee_name     varchar(50) not null,
+    employee_surname  varchar(50) not null,
+    employee_birthday date        not null
+);
+
+
+create table shop_item
+(
+    id_item    int auto_increment
+        primary key,
+    item_name  varchar(50)    not null,
+    item_price decimal(10, 2) not null
+);
+
+
+INSERT INTO employees (employee_name, employee_surname, employee_birthday) VALUES ('Michael', 'Scott', CURDATE());
+INSERT INTO employees (employee_name, employee_surname, employee_birthday) VALUES ('Andrew', 'Bernard', '2020-01-01');
+INSERT INTO employees (employee_name, employee_surname, employee_birthday) VALUES ('Pam', 'Beasliy', '1999-12-05');
+INSERT INTO employees (employee_name, employee_surname, employee_birthday) VALUES ('Jim', 'Halpert', '1987-02-13' );
+
+INSERT INTO shop_item (item_name, item_price) values ('stapler', 12.02);
+INSERT INTO shop_item (item_name, item_price) values ('paper rim', 8.34);
+INSERT INTO shop_item (item_name, item_price) values ('binder', 10.00);
+INSERT INTO shop_item (item_name, item_price) values ('letter paper', 5.05);
+
+INSERT INTO shop_transaction (id_employee, id_item, transaction_date) VALUES (1,1,'2020-12-12');
+INSERT INTO shop_transaction (id_employee, id_item, transaction_date) VALUES (2,4,'2020-06-13');
+INSERT INTO shop_transaction (id_employee, id_item, transaction_date) VALUES (3,4,'2020-08-22');
+INSERT INTO shop_transaction (id_employee, id_item, transaction_date) VALUES (4,3,'2020-08-02');
+INSERT INTO shop_transaction (id_employee, id_item, transaction_date) VALUES (1,2,'2020-11-01');
+INSERT INTO shop_transaction (id_employee, id_item, transaction_date) VALUES (2,2,'2020-02-12');
