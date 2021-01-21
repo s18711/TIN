@@ -8,6 +8,8 @@ const cors = require('cors');
 const getAllRecordsRouter = require('./routes/getAllRecords');
 const getTableRouter = require('./routes/getTable');
 const addDataRouter = require('./routes/addToTable');
+const deleteRecordRouter = require('./routes/deleteRecord');
+const updateRecordRouter = require('./routes/updateRecord');
 
 var app = express();
 
@@ -26,7 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/getAllRecords', getAllRecordsRouter);
 app.use('/getTable/:table', getTableRouter);
 app.use('/addData/:table',addDataRouter);
-
+app.use('/deleteRecord/:table', deleteRecordRouter);
+app.use('/updateRecord/:table', updateRecordRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

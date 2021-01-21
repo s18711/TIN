@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const utils = require('../Utils');
 const mysql = require('mysql');
-/* GET home page. */
-const results = []
+
 router.get('/', function(req, res, next) {
     const connection = mysql.createConnection(utils);
     connection.connect((err) => {
