@@ -1,17 +1,16 @@
 import React  from "react";
-import {ServerGetResponse} from "./ServerGetResponse";
 
 interface Props {
-    myObjectKey: string ;
-    myObjectValue: any;
+    databaseRecord : {}
 }
 
 const Card: React.FC<Props> = (Props) => {
+const values = Object.values(Props.databaseRecord);
     return(
         <React.Fragment>
             <div style={{backgroundImage : "linear-gradient(to right, green , yellow)"}}>
-                <div>
-                    <h2>{Props.myObjectKey} =  {Props.myObjectValue}</h2>
+                <div className="d-flex align-items-center justify-content-center justify-content-sm-center">
+                    {values}
                 </div>
             </div>
         </React.Fragment>

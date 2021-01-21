@@ -16,7 +16,10 @@ router.get('/', function(req, res, next) {
     const tableName = req.baseUrl.split("/")[2];
     connection.query(`SELECT * FROM ${tableName}`, (err, rows, fields) => {
         if (err)
+        {
+            res.send(err);
             console.log(err);
+        }
         else {
             res.send(rows);
         }

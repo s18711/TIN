@@ -28,7 +28,7 @@ const getAllRecords = (sqlQueries,res,connection) => {
                 console.log(err);
             else {
                 results.push(rows);
-                //done this way because fo non-blocking query function
+                //done this way because of non-blocking query function
                 if(i === sqlQueries.length - 1){
                     res.send(results);
                 }

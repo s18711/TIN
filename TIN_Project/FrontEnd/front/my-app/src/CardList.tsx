@@ -1,21 +1,40 @@
 import React from 'react';
 import MyCard from "./MyCard";
-import {ServerGetResponse} from "./ServerGetResponse";
+import {Employee} from "./Models/Employee";
+import {Shop_item} from "./Models/Shop_item";
+import {Shop_transaction} from "./Models/Shop_transaction";
 const { v4: uuidv4 } = require('uuid');
 
 interface Props {
-    serverGetResponse: ServerGetResponse;
+    show: boolean
+    employees: [Employee];
+    items : [Shop_item];
+    transactions : [Shop_transaction];
 }
 
 const CardList : React.FC<Props> = (Props) => {
+    let cardsEmployees ;
+    let cardsItems ;
+    let cardsTransaction ;
+    if(Props.show) {
+        cardsEmployees = Props.employees.map(employee => {
+            return <MyCard key={uuidv4()} databaseRecord={employee}/>
+        });
+        cardsItems = Props.items.map(item => {
+            return <MyCard key={uuidv4()} databaseRecord={item}/>
+        });
+        cardsTransaction = Props.transactions.map(transaction => {
+            return <MyCard key={uuidv4()} databaseRecord={transaction}/>
+        });
+    }
 
-   const cards = Object.entries(Props.serverGetResponse).map(myObject => {
-       return <MyCard key={uuidv4()}  myObjectKey={myObject[0]} myObjectValue={myObject[1]} />
-   });
+
     return (
         <React.Fragment>
             <div>
-                {cards}
+                {cardsEmployees}
+                {cardsItems}
+                {cardsTransaction}
             </div>
         </React.Fragment>
     );

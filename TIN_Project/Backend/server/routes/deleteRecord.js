@@ -23,10 +23,7 @@ router.delete('/', function(req, res, next) {
     else
         actualColumnValue = columnValue;
 
-    // const key = Object.keys(req.body);
-    // const value = Object.values(req.body);
-    // console.log(key);
-    // console.log(value)
+
     connection.query(`DELETE FROM ${tableName} WHERE ${columnName} = ${actualColumnValue} `, (err, rows, fields) => {
         if (err) {
             console.log(err);

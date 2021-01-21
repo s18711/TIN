@@ -19,12 +19,12 @@ router.put('/', function(req, res, next) {
     let actualWhereValue = '';
 
     if(typeof columnValue == 'string' || (columnValue instanceof String))
-        actualColumnValue = `'${columnValue}'`;
+        actualColumnValue = `'${columnValue}'`; // to make it sql-like string
     else
         actualColumnValue = columnValue;
 
     if(typeof whereValue == 'string' || (whereValue instanceof String))
-        actualWhereValue = `'${whereValue}'`;
+        actualWhereValue = `'${whereValue}'`;// to make it sql-like string
     else
         actualWhereValue = whereValue;
 

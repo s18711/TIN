@@ -8,7 +8,7 @@ const Shop_transaction = require('../Models/Shop_transaction');
 
 router.post('/', function (req, res, next) {
 
-    const tableName = req.baseUrl.split("/")[2];
+    const tableName = req.baseUrl.split("/")[2]; // getting tableName from URL
     try {
 
         const connection = mysql.createConnection(utils);
