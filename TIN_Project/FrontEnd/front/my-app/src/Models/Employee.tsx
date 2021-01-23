@@ -3,6 +3,15 @@ export class Employee {
     private _employee_name: string;
     private _employee_surname: string;
     private _employee_birthday : string;
+    private _id_employee: number;
+
+    get id_employee(): number {
+        return this._id_employee;
+    }
+
+    set id_employee(value: number) {
+        this._id_employee = value;
+    }
 
     get employee_name(): string {
         return this._employee_name;
@@ -28,7 +37,7 @@ export class Employee {
         this._employee_birthday = value;
     }
 
-    constructor(employee_name : string,employee_surname: string,employee_birthday:string) {
+    constructor(id_employee: number, employee_name : string,employee_surname: string,employee_birthday:string) {
         const dateRegex =new RegExp("^(19|20)\\d\\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$");
 
             if(!dateRegex.test(employee_birthday))
@@ -37,6 +46,7 @@ export class Employee {
         this._employee_name = employee_name;
         this._employee_surname = employee_surname;
         this._employee_birthday = employee_birthday;
+        this._id_employee = id_employee;
 
     }
 
