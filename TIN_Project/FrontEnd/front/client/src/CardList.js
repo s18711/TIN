@@ -208,8 +208,8 @@ const CardList = (props) => {
                         });
                         break;
                     case "item_price":
-                        setEmp(prevState => {
-                            return {...prevState, item_price: value}
+                        setItem(prevState => {
+                            return {...prevState, item_price: parseInt(value)}
                         });
                         break;
                 }
@@ -218,12 +218,12 @@ const CardList = (props) => {
                 switch (column) {
                     case "id_employee":
                         setTrans(prevState => {
-                            return {...prevState, id_employee: value}
+                            return {...prevState, id_employee: parseInt(value)}
                         });
                         break;
                     case "id_item":
                         setTrans(prevState => {
-                            return {...prevState, id_item: value}
+                            return {...prevState, id_item: parseInt(value)}
                         });
                         break;
                     case "transaction_date":
