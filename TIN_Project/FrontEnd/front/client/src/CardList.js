@@ -74,6 +74,9 @@ const CardList = (props) => {
         console.log(employees);
     }
 
+    const onAfterSaveCell = (oldValue, newValue, row, column) =>{
+        console.log("saved cell", oldValue,newValue,row,column);
+    }
     const selectRow = {
         mode: 'radio',
         clickToSelect: true,
@@ -82,8 +85,7 @@ const CardList = (props) => {
     };
     const cellEdit = {
         mode: 'click',
-        onClick :onChangeHandler
-
+        afterSaveCell: onAfterSaveCell
     };
     return (
         <div className={"container"}>
