@@ -10,6 +10,7 @@ class App extends React.Component {
         return (
             <Container className={"d-flex flex-column justify-content-center align-items-center "}>
                 <h1>Shop database</h1>
+                <h5>In order to edit, click on table values</h5>
                 <CardList />
             </Container>
         );

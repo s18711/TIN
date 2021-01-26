@@ -23,12 +23,12 @@ const CardList = (props) => {
         setEmployees(jsonResponse[0]);
         setItems(jsonResponse[1]);
         setTransactions(jsonResponse[2]);
-        console.log("data received");
+        // console.log("data received");
     }
 
     useEffect(() => {
         getData();
-        console.log("useEffect");
+        // console.log("useEffect");
     }, [])
 
 
@@ -86,7 +86,7 @@ const CardList = (props) => {
 
 
     const onAfterSaveCellHandler = (oldValue, newValue, row, column, table) => {
-        console.log(oldValue, newValue, row, column);
+        // console.log(oldValue, newValue, row, column);
         const updateRequestOptions = {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
@@ -118,7 +118,7 @@ const CardList = (props) => {
                 selected = selectedRow3;
                 break;
         }
-        console.log(selected);
+        // console.log(selected);
         const deleteRequestOptions = {
             method: "DELETE",
             headers: {"Content-Type": "application/json"},
@@ -336,7 +336,7 @@ const CardList = (props) => {
                                     <span className={"modal-label"}>employee_name </span>
                                 </Col>
                                 <Col xs={5} md={4}>
-                                    <input onChange={event => onChangeHandler(1,"employee_name",event.target.value)}/>
+                                    <input type={"text"} onChange={event => onChangeHandler(1,"employee_name",event.target.value)}/>
                                 </Col>
                             </Row>
                             <Row>
@@ -344,15 +344,15 @@ const CardList = (props) => {
                                     <span className={"modal-label"}>employee_surname </span>
                                 </Col>
                                 <Col xs={5} md={4}>
-                                    <input onChange={event => onChangeHandler(1,"employee_surname",event.target.value)}/>
+                                    <input type={"text"} onChange={event => onChangeHandler(1,"employee_surname",event.target.value)}/>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>employee_birthday </span>
+                                    <span className={"modal-label"}>employee_birthday (e.g. 2020-09-27) </span>
                                 </Col>
                                 <Col xs={5} md={4}>
-                                    <input onChange={event => onChangeHandler(1,"employee_birthday",event.target.value)}/>
+                                    <input type={"text"} onChange={event => onChangeHandler(1,"employee_birthday",event.target.value)}/>
                                 </Col>
                             </Row>
                         </Container>
@@ -399,7 +399,7 @@ const CardList = (props) => {
                                     <span className={"modal-label"}>item_name </span>
                                 </Col>
                                 <Col xs={5} md={4}>
-                                    <input onChange={event => onChangeHandler(2,"item_name", event.target.value)}/>
+                                    <input type={"text"} onChange={event => onChangeHandler(2,"item_name", event.target.value)}/>
                                 </Col>
                             </Row>
                             <Row>
@@ -407,7 +407,7 @@ const CardList = (props) => {
                                     <span className={"modal-label"}>item_price </span>
                                 </Col>
                                 <Col xs={5} md={4}>
-                                    <input onChange={event => onChangeHandler(2,"item_price", event.target.value)}/>
+                                    <input type={"number"} onChange={event => onChangeHandler(2,"item_price", event.target.value)}/>
                                 </Col>
                             </Row>
 
@@ -455,7 +455,7 @@ const CardList = (props) => {
                                     <span className={"modal-label"}>id_employee </span>
                                 </Col>
                                 <Col xs={5} md={4}>
-                                    <input onChange={event => onChangeHandler(3,"id_employee", event.target.value)}/>
+                                    <input type={"number"}  onChange={event => onChangeHandler(3,"id_employee", event.target.value)}/>
                                 </Col>
                             </Row>
                             <Row>
@@ -463,15 +463,15 @@ const CardList = (props) => {
                                     <span className={"modal-label"}>id_item </span>
                                 </Col>
                                 <Col xs={5} md={4}>
-                                    <input onChange={event => onChangeHandler(3,"id_item",  event.target.value)}/>
+                                    <input type={"number"} onChange={event => onChangeHandler(3,"id_item",  event.target.value)}/>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>transaction_date </span>
+                                    <span className={"modal-label"}>transaction_date (e.g. 2020-09-27) </span>
                                 </Col>
                                 <Col xs={5} md={4}>
-                                    <input onChange={event => onChangeHandler(3,"transaction_date", event.target.value)}/>
+                                    <input type={"text"} onChange={event => onChangeHandler(3,"transaction_date", event.target.value)}/>
                                 </Col>
                             </Row>
 
