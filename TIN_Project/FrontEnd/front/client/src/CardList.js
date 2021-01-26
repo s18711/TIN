@@ -3,13 +3,13 @@ import BootstrapTable from "react-bootstrap-table-next";
 import cellEditFactory from 'react-bootstrap-table2-editor';
 
 
-
 const CardList = (props) => {
-    const [employees,setEmployees] = useState([]);
-    const [items,setItems] = useState([]);
-    const [transactions,setTransactions] = useState([]);
+    const [employees, setEmployees] = useState([]);
+    const [items, setItems] = useState([]);
+    const [transactions, setTransactions] = useState([]);
+    const [selectedRow, setSelectedRow] = useState({});
 
-  const getData = async () => {
+    const getData = async () => {
         const jsonResponse = await fetch("http://localhost:9000/getAllRecords").then(response => response.json());
         setEmployees(jsonResponse[0]);
         setItems(jsonResponse[1]);
@@ -17,11 +17,8 @@ const CardList = (props) => {
     }
 
     useEffect(() => {
-        console.log("use effect")
         getData();
-    },[])
-
-
+    }, [])
 
 
     const empsColumns = [
@@ -69,38 +66,81 @@ const CardList = (props) => {
             console.log(row);
         }
     }
-    const onChangeHandler = (isSelect, rows) => {
-        console.log(isSelect,rows)
-        console.log(employees);
+    const onSelectHandler = (row,isSelect, rowIndex,e) => {
+        setSelectedRow(row)
     }
 
-    const onAfterSaveCell = (oldValue, newValue, row, column) =>{
-        console.log("saved cell", oldValue,newValue,row,column);
+
+    const onAfterSaveCellHandler = (oldValue, newValue, row, column) => {
+        console.log(oldValue, newValue, row, column);
+        const updateRequestOptions = {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(
+                {
+                    columnName: column.dataField,
+                    columnValue: newValue,
+                    whereName: Object.keys(row)[0],
+                    whereValue: Object.values(row)[0]
+                }
+            )
+        };
+
+        fetch("http://localhost:9000/updateRecord/employees",updateRequestOptions);
+        console.log("body" , updateRequestOptions.body);
+    }
+
+    const deleteRecord = (event) => {
+        const deleteRequestOptions = {
+            method: "DELETE",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(
+                {
+                    columnName: Object.keys(selectedRow)[0],
+                    columnValue: Object.values(selectedRow)[0],
+                }
+            )
+        };
+        fetch("http://localhost:9000/deleteRecord/employees",deleteRequestOptions);
+
+        setEmployees(prevState => {
+            const newEmps = prevState.filter((value, index, array) => {
+                return Object.values(value)[0] !== Object.values(selectedRow)[0];
+            });
+            return newEmps;
+        });
+
+
+
+
     }
     const selectRow = {
         mode: 'radio',
         clickToSelect: true,
         clickToEdit: true,  // Click to edit cell also
-        onSelect: onChangeHandler
+        onSelect: onSelectHandler
     };
     const cellEdit = {
         mode: 'click',
-        afterSaveCell: onAfterSaveCell
+        afterSaveCell: onAfterSaveCellHandler
     };
     return (
         <div className={"container"}>
             <div className={"row"}>
-                <h2>Employees</h2>
-                <BootstrapTable
-                    rowStyle={{background: 'white'}}
-                    striped={true}
-                    keyField={"id_employee"}
-                    data={employees}
-                    columns={empsColumns}
-                    // rowEvents={rowEvents}
-                    selectRow={ selectRow}
-                    cellEdit={ cellEditFactory( cellEdit ) }
-                />
+
+                    <h2>Employees</h2>
+                    <BootstrapTable
+                        rowStyle={{background: 'white'}}
+                        striped={true}
+                        keyField={"id_employee"}
+                        data={employees}
+                        columns={empsColumns}
+                        selectRow={selectRow}
+                        cellEdit={cellEditFactory(cellEdit)}
+                    />
+
+                    <button type={"button"} className={"btn btn-danger"} onClick={deleteRecord}>Delete</button>
+
             </div>
             <div className={"row"}>
                 <h2>Items</h2>
