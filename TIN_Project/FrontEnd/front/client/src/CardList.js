@@ -14,9 +14,12 @@ const CardList = (props) => {
     const [show1, setShow1] = useState(false);
     const [show2, setShow2] = useState(false);
     const [show3, setShow3] = useState(false);
-    const [emp, setEmp] = useState({employee_name : '', employee_surname: '', employee_birthday: ''});
-    const [item, setItem] = useState({item_name: "", item_price: 0});
-    const [trans, setTrans] = useState({id_employee: 0, id_item: 0, transaction_date : ""});
+    const [showDetails1, setShowDetails1] = useState(false);
+    const [showDetails2, setShowDetails2] = useState(false);
+    const [showDetails3, setShowDetails3] = useState(false);
+    const [emp, setEmp] = useState({employee_name : '', employee_surname: '', employee_birthday: '', employee_position: '', employee_seniority: 0});
+    const [item, setItem] = useState({item_name: "", item_price: 0, item_category: '', item_color: ''});
+    const [trans, setTrans] = useState({id_employee: 0, id_item: 0, transaction_date : "", transaction_comment: '', transaction_method: ''});
 
     const getData = async () => {
         const jsonResponse = await fetch("http://localhost:9000/getAllRecords").then(response => response.json());
@@ -42,6 +45,12 @@ const CardList = (props) => {
         },
         {
             dataField: "employee_birthday", text: "employee_birthday", headerStyle: {backgroundColor: 'green'}
+        },
+        {
+            dataField: "employee_position", text: "employee_position", headerStyle: {backgroundColor: 'green'}
+        },
+        {
+            dataField: "employee_seniority", text: "employee_seniority", headerStyle: {backgroundColor: 'green'}
         }
     ];
 
@@ -54,6 +63,12 @@ const CardList = (props) => {
         },
         {
             dataField: "item_price", text: "item_price", headerStyle: {backgroundColor: 'green'}
+        },
+        {
+            dataField: "item_category", text: "item_category", headerStyle: {backgroundColor: 'green'}
+        },
+        {
+            dataField: "item_color", text: "item_color", headerStyle: {backgroundColor: 'green'}
         }
     ]
     const transactionsColumns = [
@@ -68,6 +83,12 @@ const CardList = (props) => {
         },
         {
             dataField: "transaction_date", text: "transaction_date", headerStyle: {backgroundColor: 'green'}
+        },
+        {
+            dataField: "transaction_comment", text: "transaction_comment", headerStyle: {backgroundColor: 'green'}
+        },
+        {
+            dataField: "transaction_method", text: "transaction_method", headerStyle: {backgroundColor: 'green'}
         }
     ]
 
@@ -104,6 +125,24 @@ const CardList = (props) => {
 
     }
 
+    const showDetails = (table) => {
+        let selected;
+        switch (table) {
+            case "employees":
+                selected = selectedRow1;
+                setShowDetails1(true);
+                break;
+            case "shop_item":
+                selected = selectedRow2;
+                setShowDetails2(true);
+                break;
+            case "shop_transaction":
+                selected = selectedRow3;
+                setShowDetails3(true);
+                break;
+        }
+
+    }
 
     const deleteRecord = (event, table) => {
         let selected;
@@ -163,6 +202,9 @@ const CardList = (props) => {
         setShow1(false);
         setShow2(false);
         setShow3(false);
+        setShowDetails1(false);
+        setShowDetails2(false);
+        setShowDetails3(false);
     }
     const handleShow = (forWho) => {
             switch (forWho) {
@@ -198,6 +240,16 @@ const CardList = (props) => {
                            return {...prevState, employee_birthday: value}
                        });
                        break;
+                   case "employee_position":
+                       setEmp(prevState => {
+                           return {...prevState, employee_position: value}
+                       });
+                       break;
+                   case "employee_seniority":
+                       setEmp(prevState => {
+                           return {...prevState, employee_seniority: parseInt(value)}
+                       });
+                       break;
                }
                break;
             case 2 :
@@ -210,6 +262,16 @@ const CardList = (props) => {
                     case "item_price":
                         setItem(prevState => {
                             return {...prevState, item_price: parseInt(value)}
+                        });
+                        break;
+                    case "item_category":
+                        setItem(prevState => {
+                            return {...prevState, item_category: value}
+                        });
+                        break;
+                    case "item_color":
+                        setItem(prevState => {
+                            return {...prevState, item_color: value}
                         });
                         break;
                 }
@@ -229,6 +291,16 @@ const CardList = (props) => {
                     case "transaction_date":
                         setTrans(prevState => {
                             return {...prevState, transaction_date: value}
+                        });
+                        break;
+                    case "transaction_comment":
+                        setTrans(prevState => {
+                            return {...prevState, transaction_comment: value}
+                        });
+                        break;
+                    case "transaction_method":
+                        setTrans(prevState => {
+                            return {...prevState, transaction_method: value}
                         });
                         break;
                 }
@@ -319,6 +391,7 @@ const CardList = (props) => {
 
                 <button type={"button"} className={"btn btn-danger"} onClick={event => deleteRecord(event,"employees")}>Delete</button>
                 <button type={"button"} className={"btn btn-primary"} onClick={event => handleShow(1)}>Add Record</button>
+                <button type={"button"} className={"btn btn-info"} onClick={event => showDetails("employees")}>Show details</button>
                 <Modal
                     show={show1}
                     onHide={handleClose}
@@ -355,6 +428,22 @@ const CardList = (props) => {
                                     <input type={"text"} onChange={event => onChangeHandler(1,"employee_birthday",event.target.value)}/>
                                 </Col>
                             </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>employee_position  </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <input type={"text"} onChange={event => onChangeHandler(1,"employee_position",event.target.value)}/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>employee_seniority  </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <input type={"number"} onChange={event => onChangeHandler(1,"employee_seniority",event.target.value)}/>
+                                </Col>
+                            </Row>
                         </Container>
                     </Modal.Body>
                     <Modal.Footer>
@@ -363,6 +452,74 @@ const CardList = (props) => {
                         </Button>
                         <Button variant="primary" onClick={event => handleSave("employees",emp)}>
                             Save
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+                <Modal
+                    show={showDetails1}
+                    onHide={handleClose}
+                    backdrop="static"
+                    keyboard={false}
+
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Employee Details</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Container>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow1)[0]} </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow1)[0]} </span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow1)[1]} </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow1)[1]} </span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow1)[2]} </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow1)[2]} </span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow1)[3]} </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow1)[3]} </span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow1)[4]}  </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow1)[4]} </span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow1)[5]}  </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow1)[5]} </span>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
                         </Button>
                     </Modal.Footer>
                 </Modal>
@@ -382,6 +539,8 @@ const CardList = (props) => {
 
                 <button type={"button"} className={"btn btn-danger"} onClick={event => deleteRecord(event,"shop_item")}>Delete</button>
                 <button type={"button"} className={"btn btn-primary"} onClick={event => handleShow(2)}>Add Record</button>
+                <button type={"button"} className={"btn btn-info"} onClick={event => showDetails("shop_item")}>Show details</button>
+
                 <Modal
                     show={show2}
                     onHide={handleClose}
@@ -410,6 +569,22 @@ const CardList = (props) => {
                                     <input type={"number"} onChange={event => onChangeHandler(2,"item_price", event.target.value)}/>
                                 </Col>
                             </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>item_category </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <input type={"text"} onChange={event => onChangeHandler(2,"item_category", event.target.value)}/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>item_color </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <input type={"text"} onChange={event => onChangeHandler(2,"item_color", event.target.value)}/>
+                                </Col>
+                            </Row>
 
                         </Container>
                     </Modal.Body>
@@ -419,6 +594,67 @@ const CardList = (props) => {
                         </Button>
                         <Button variant="primary" onClick={event => handleSave("shop_item",item)}>
                             Save
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+                <Modal
+                    show={showDetails2}
+                    onHide={handleClose}
+                    backdrop="static"
+                    keyboard={false}
+
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Item Details</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Container>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow2)[0]} </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow2)[0]} </span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow2)[1]} </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow2)[1]} </span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow2)[2]} </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow2)[2]} </span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow2)[3]} </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow2)[3]} </span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow2)[4]}  </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow2)[4]} </span>
+                                </Col>
+                            </Row>
+
+                        </Container>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
                         </Button>
                     </Modal.Footer>
                 </Modal>
@@ -438,6 +674,8 @@ const CardList = (props) => {
 
                 <button type={"button"} className={"btn btn-danger"} onClick={event => deleteRecord(event,"shop_transaction")}>Delete</button>
                 <button type={"button"} className={"btn btn-primary"} onClick={event => handleShow(3)}>Add Record</button>
+                <button type={"button"} className={"btn btn-info"} onClick={event => showDetails("shop_transaction")}>Show details</button>
+
                 <Modal
                     show={show3}
                     onHide={handleClose}
@@ -474,6 +712,22 @@ const CardList = (props) => {
                                     <input type={"text"} onChange={event => onChangeHandler(3,"transaction_date", event.target.value)}/>
                                 </Col>
                             </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>transaction_comment </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <input type={"text"} onChange={event => onChangeHandler(3,"transaction_comment", event.target.value)}/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>transaction_method  </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <input type={"text"} onChange={event => onChangeHandler(3,"transaction_method", event.target.value)}/>
+                                </Col>
+                            </Row>
 
                         </Container>
                     </Modal.Body>
@@ -483,6 +737,74 @@ const CardList = (props) => {
                         </Button>
                         <Button variant="primary" onClick={event => handleSave("shop_transaction",trans)}>
                             Save
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+                <Modal
+                    show={showDetails3}
+                    onHide={handleClose}
+                    backdrop="static"
+                    keyboard={false}
+
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Transaction Details</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Container>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow3)[0]} </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow3)[0]} </span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow3)[1]} </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow3)[1]} </span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow3)[2]} </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow3)[2]} </span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow3)[3]} </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow3)[3]} </span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow3)[4]}  </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow3)[4]} </span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5} md={5}>
+                                    <span className={"modal-label"}>{Object.keys(selectedRow3)[5]}  </span>
+                                </Col>
+                                <Col xs={5} md={4}>
+                                    <span className={"modal-label"}>{Object.values(selectedRow3)[5]} </span>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
                         </Button>
                     </Modal.Footer>
                 </Modal>

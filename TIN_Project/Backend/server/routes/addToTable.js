@@ -22,20 +22,20 @@ router.post('/', function (req, res, next) {
         connection.beginTransaction((err) => {
             if (err)
                 throw err;
-            const sqlStmt = `INSERT INTO tableName (key0, key1, key2) values ('value0','value1','value2')`;
+            const sqlStmt = `INSERT INTO tableName (key0, key1, key2, key3, key4) values ('value0','value1','value2','value3','value4')`;
             if (tableName === "employees") {
-                const {employee_name, employee_surname, employee_birthday} = req.body;
-                const employee = new Employee(employee_name, employee_surname, employee_birthday);
+                const {employee_name, employee_surname, employee_birthday,employee_position,employee_seniority} = req.body;
+                const employee = new Employee(employee_name, employee_surname, employee_birthday,employee_position,employee_seniority);
                 performInsert(tableName, employee, connection, sqlStmt, res);
 
             } else if (tableName === "shop_item") {
-                const {item_name, item_price} = req.body;
-                const shop_item = new Shop_item(item_name, item_price);
+                const {item_name, item_price,item_category,item_color} = req.body;
+                const shop_item = new Shop_item(item_name, item_price,item_category,item_color);
                 performInsert(tableName, shop_item, connection, sqlStmt, res);
 
             } else if (tableName === "shop_transaction") {
-                const {id_employee, id_item, transaction_date} = req.body;
-                const shop_transaction = new Shop_transaction(id_employee, id_item, transaction_date);
+                const {id_employee, id_item, transaction_date,transaction_comment,transaction_method} = req.body;
+                const shop_transaction = new Shop_transaction(id_employee, id_item, transaction_date,transaction_comment,transaction_method);
                 performInsert(tableName, shop_transaction, connection, sqlStmt, res);
 
             } else {
@@ -59,7 +59,7 @@ const performInsert = (tableName, model, connection, sqlStatement, res) => {
     console.log(values);
     console.log(keys.length);
 
-    if (keys.length === 2) {
+    if (keys.length === 4) {
         console.log("key.length = 2")
         for (let i = 0; i < keys.length; i++) {
             console.log(i, keys[i], values[i]);
@@ -67,9 +67,9 @@ const performInsert = (tableName, model, connection, sqlStatement, res) => {
             sqlString = sqlString.replace(`value${i}`, `${values[i]}`);
             console.log(sqlString);
         }
-        sqlString = sqlString.replace(", key2", "");
-        sqlString = sqlString.replace(",'value2'", "");
-    } else if (keys.length === 3) {
+        sqlString = sqlString.replace(", key4", "");
+        sqlString = sqlString.replace(",'value4'", "");
+    } else if (keys.length === 5) {
         console.log("key.length = 3")
         for (let i = 0; i < keys.length; i++) {
             console.log(i, keys[i], values[i]);
