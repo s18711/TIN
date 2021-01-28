@@ -4,25 +4,42 @@ import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import RecordModal from "./RecordModal";
 import DetailsModal from "./DetailsModal";
+const MyColumns = require("./MyColumns");
+
 
 
 const CardList = (props) => {
+    //TODO: table content
     const [employees, setEmployees] = useState([]);
     const [items, setItems] = useState([]);
     const [transactions, setTransactions] = useState([]);
+
+    //TODO: selected Rows in tables
     const [selectedRow1, setSelectedRow1] = useState({});
     const [selectedRow2, setSelectedRow2] = useState({});
     const [selectedRow3, setSelectedRow3] = useState({});
+
+    //TODO: show property for modals for adding records
     const [show1, setShow1] = useState(false);
     const [show2, setShow2] = useState(false);
     const [show3, setShow3] = useState(false);
+
+    //TODO: show property for modals for details
     const [showDetails1, setShowDetails1] = useState(false);
     const [showDetails2, setShowDetails2] = useState(false);
     const [showDetails3, setShowDetails3] = useState(false);
+
+    //TODO: objects used in adding records
     const [emp, setEmp] = useState({employee_name : '', employee_surname: '', employee_birthday: '', employee_position: '', employee_seniority: 0});
     const [item, setItem] = useState({item_name: "", item_price: 0, item_category: '', item_color: ''});
     const [trans, setTrans] = useState({id_employee: 0, id_item: 0, transaction_date : "", transaction_comment: '', transaction_method: ''});
 
+    //TODO: state for buttons delete and show details
+    const [table1ButtonDisabled, setTable1ButtonDisabled] = useState(true);
+    const [table2ButtonDisabled, setTable2ButtonDisabled] = useState(true);
+    const [table3ButtonDisabled, setTable3ButtonDisabled] = useState(true);
+
+    //TODO: getting data from database
     const getData = async () => {
         const jsonResponse = await fetch("http://localhost:9000/getAllRecords").then(response => response.json());
         setEmployees(jsonResponse[0]);
@@ -37,72 +54,19 @@ const CardList = (props) => {
     }, [])
 
 
-    const empsColumns = [
-        {dataField: "id_employee", text: "id_employee", headerStyle: {backgroundColor: 'green'}},
-        {
-            dataField: "employee_name", text: "employee_name", headerStyle: {backgroundColor: 'green'}
-        },
-        {
-            dataField: "employee_surname", text: "employee_surname", headerStyle: {backgroundColor: 'green'}
-        },
-        {
-            dataField: "employee_birthday", text: "employee_birthday", headerStyle: {backgroundColor: 'green'}
-        },
-        // {
-        //     dataField: "employee_position", text: "employee_position", headerStyle: {backgroundColor: 'green'}
-        // },
-        // {
-        //     dataField: "employee_seniority", text: "employee_seniority", headerStyle: {backgroundColor: 'green'}
-        // }
-    ];
-
-    const itemsColumns = [
-        {
-            dataField: "id_item", text: "id_item", headerStyle: {backgroundColor: 'green'}
-        },
-        {
-            dataField: "item_name", text: "item_name", headerStyle: {backgroundColor: 'green'}
-        },
-        {
-            dataField: "item_price", text: "item_price", headerStyle: {backgroundColor: 'green'}
-        },
-        // {
-        //     dataField: "item_category", text: "item_category", headerStyle: {backgroundColor: 'green'}
-        // },
-        // {
-        //     dataField: "item_color", text: "item_color", headerStyle: {backgroundColor: 'green'}
-        // }
-    ]
-    const transactionsColumns = [
-        {
-            dataField: "id_transaction", text: "id_transaction", headerStyle: {backgroundColor: 'green'}
-        },
-        {
-            dataField: "id_item", text: "it_item", headerStyle: {backgroundColor: 'green'}
-        },
-        {
-            dataField: "id_employee", text: "id_employee", headerStyle: {backgroundColor: 'green'}
-        },
-        {
-            dataField: "transaction_date", text: "transaction_date", headerStyle: {backgroundColor: 'green'}
-        },
-        // {
-        //     dataField: "transaction_comment", text: "transaction_comment", headerStyle: {backgroundColor: 'green'}
-        // },
-        // {
-        //     dataField: "transaction_method", text: "transaction_method", headerStyle: {backgroundColor: 'green'}
-        // }
-    ]
 
 
     const onSelectHandler1 = (row) => {
         setSelectedRow1(row);
+        setTable1ButtonDisabled(false);
     }
     const onSelectHandler2 = (row) => {
         setSelectedRow2(row);
+        setTable2ButtonDisabled(false);
     }
     const onSelectHandler3 = (row) => {
         setSelectedRow3(row);
+        setTable3ButtonDisabled(false);
     }
 
 
@@ -151,12 +115,15 @@ const CardList = (props) => {
         switch (table) {
             case "employees":
                 selected = selectedRow1;
+                setTable1ButtonDisabled(true);
                 break;
             case "shop_item":
                 selected = selectedRow2;
+                setTable2ButtonDisabled(true);
                 break;
             case "shop_transaction":
                 selected = selectedRow3;
+                setTable3ButtonDisabled(true);
                 break;
         }
         // console.log(selected);
@@ -372,14 +339,14 @@ const CardList = (props) => {
                     striped={true}
                     keyField={"id_employee"}
                     data={employees}
-                    columns={empsColumns}
+                    columns={MyColumns.empsColumns}
                     selectRow={selectRow1}
                     cellEdit={cellEditFactory(cellEdit1)}
                 />
 
-                <button type={"button"} className={"btn btn-danger"} onClick={event => deleteRecord(event,"employees")}>Delete</button>
+                <button type={"button"} disabled={table1ButtonDisabled} className={"btn btn-danger"} onClick={event => deleteRecord(event,"employees")}>Delete</button>
                 <button type={"button"} className={"btn btn-primary"} onClick={event => handleShow(1)}>Add Record</button>
-                <button type={"button"} className={"btn btn-info"} onClick={event => showDetails("employees")}>Show details</button>
+                <button type={"button"} disabled={table1ButtonDisabled} className={"btn btn-info"} onClick={event => showDetails("employees")}>Show details</button>
 
                 <RecordModal show={show1} title={"Add employees"} tableNo={1} onChangeHandler={onChangeHandler}
                              myObject={emp} handleClose={handleClose} handleSave={handleSave}
@@ -401,14 +368,14 @@ const CardList = (props) => {
                     striped={true}
                     keyField={"id_item"}
                     data={items}
-                    columns={itemsColumns}
+                    columns={MyColumns.itemsColumns}
                     selectRow={selectRow2}
                     cellEdit={cellEditFactory(cellEdit2)}
                 />
 
-                <button type={"button"} className={"btn btn-danger"} onClick={event => deleteRecord(event,"shop_item")}>Delete</button>
+                <button type={"button"} disabled={table2ButtonDisabled} className={"btn btn-danger"} onClick={event => deleteRecord(event,"shop_item")}>Delete</button>
                 <button type={"button"} className={"btn btn-primary"} onClick={event => handleShow(2)}>Add Record</button>
-                <button type={"button"} className={"btn btn-info"} onClick={event => showDetails("shop_item")}>Show details</button>
+                <button type={"button"} disabled={table2ButtonDisabled} className={"btn btn-info"} onClick={event => showDetails("shop_item")}>Show details</button>
 
                 <RecordModal show={show2} title={"Add items"} tableNo={2} onChangeHandler={onChangeHandler}
                              myObject={item} handleClose={handleClose} handleSave={handleSave}
@@ -430,14 +397,14 @@ const CardList = (props) => {
                     striped={true}
                     keyField={"id_transaction"}
                     data={transactions}
-                    columns={transactionsColumns}
+                    columns={MyColumns.transactionsColumns}
                     selectRow={selectRow3}
                     cellEdit={cellEditFactory(cellEdit3)}
                 />
 
-                <button type={"button"} className={"btn btn-danger"} onClick={event => deleteRecord(event,"shop_transaction")}>Delete</button>
+                <button type={"button"} disabled={table3ButtonDisabled} className={"btn btn-danger"} onClick={event => deleteRecord(event,"shop_transaction")}>Delete</button>
                 <button type={"button"} className={"btn btn-primary"} onClick={event => handleShow(3)}>Add Record</button>
-                <button type={"button"} className={"btn btn-info"} onClick={event => showDetails("shop_transaction")}>Show details</button>
+                <button type={"button"} disabled={table3ButtonDisabled} className={"btn btn-info"} onClick={event => showDetails("shop_transaction")}>Show details</button>
 
                 <RecordModal show={show3} title={"Add transactions"} tableNo={3} onChangeHandler={onChangeHandler}
                              myObject={trans} handleClose={handleClose} handleSave={handleSave}

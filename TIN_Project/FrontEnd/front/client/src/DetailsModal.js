@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Col, Container, Modal, Row} from "react-bootstrap";
+import {Col, Container, Modal, Row} from "react-bootstrap";
 
 const DetailsModal = (props) => {
     const rows = Object.entries(props.myObject).map(value => {
@@ -29,14 +29,6 @@ const DetailsModal = (props) => {
                         {rows}
                     </Container>
                 </Modal.Body>
-                <Modal.Footer>
-                    {/*<Button variant="secondary" onClick={props.handleClose}>*/}
-                    {/*    Close*/}
-                    {/*</Button>*/}
-                    {/*<Button variant="primary" onClick={event => props.handleSave(props.tableName, props.myObject)}>*/}
-                    {/*    Save*/}
-                    {/*</Button>*/}
-                </Modal.Footer>
             </Modal>
         </div>
     );
