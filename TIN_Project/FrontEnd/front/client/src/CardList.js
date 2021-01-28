@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import BootstrapTable from "react-bootstrap-table-next";
 import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
 import cellEditFactory from 'react-bootstrap-table2-editor';
+import RecordModal from "./RecordModal";
+import DetailsModal from "./DetailsModal";
 
 
 const CardList = (props) => {
@@ -46,12 +48,12 @@ const CardList = (props) => {
         {
             dataField: "employee_birthday", text: "employee_birthday", headerStyle: {backgroundColor: 'green'}
         },
-        {
-            dataField: "employee_position", text: "employee_position", headerStyle: {backgroundColor: 'green'}
-        },
-        {
-            dataField: "employee_seniority", text: "employee_seniority", headerStyle: {backgroundColor: 'green'}
-        }
+        // {
+        //     dataField: "employee_position", text: "employee_position", headerStyle: {backgroundColor: 'green'}
+        // },
+        // {
+        //     dataField: "employee_seniority", text: "employee_seniority", headerStyle: {backgroundColor: 'green'}
+        // }
     ];
 
     const itemsColumns = [
@@ -64,12 +66,12 @@ const CardList = (props) => {
         {
             dataField: "item_price", text: "item_price", headerStyle: {backgroundColor: 'green'}
         },
-        {
-            dataField: "item_category", text: "item_category", headerStyle: {backgroundColor: 'green'}
-        },
-        {
-            dataField: "item_color", text: "item_color", headerStyle: {backgroundColor: 'green'}
-        }
+        // {
+        //     dataField: "item_category", text: "item_category", headerStyle: {backgroundColor: 'green'}
+        // },
+        // {
+        //     dataField: "item_color", text: "item_color", headerStyle: {backgroundColor: 'green'}
+        // }
     ]
     const transactionsColumns = [
         {
@@ -84,12 +86,12 @@ const CardList = (props) => {
         {
             dataField: "transaction_date", text: "transaction_date", headerStyle: {backgroundColor: 'green'}
         },
-        {
-            dataField: "transaction_comment", text: "transaction_comment", headerStyle: {backgroundColor: 'green'}
-        },
-        {
-            dataField: "transaction_method", text: "transaction_method", headerStyle: {backgroundColor: 'green'}
-        }
+        // {
+        //     dataField: "transaction_comment", text: "transaction_comment", headerStyle: {backgroundColor: 'green'}
+        // },
+        // {
+        //     dataField: "transaction_method", text: "transaction_method", headerStyle: {backgroundColor: 'green'}
+        // }
     ]
 
 
@@ -222,6 +224,7 @@ const CardList = (props) => {
     }
 
     const onChangeHandler = (where,column,value) => {
+        // console.log("change",where,column,value);
         switch (where) {
             case 1 :
                switch (column) {
@@ -311,6 +314,8 @@ const CardList = (props) => {
 
 
     const handleSave = (table,myObject) => {
+        // console.log(myObject);
+        // console.log(table);
         const addRequestOptions = {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -325,23 +330,6 @@ const CardList = (props) => {
         getData();
         getData();
     }
-
-    // const handleSaveItem = (myObject) => {
-    //     const addRequestOptions = {
-    //         method: "POST",
-    //         headers: {"Content-Type": "application/json"},
-    //         body: JSON.stringify(
-    //             myObject
-    //         )
-    //     };
-    //     // fetch("http://localhost:9000/addData/items", addRequestOptions);
-    //     console.log(addRequestOptions.body);
-    //     setShow(false);
-    //     getData();
-    //     getData();
-    // }
-
-
 
 
     const selectRow1 = {
@@ -392,137 +380,18 @@ const CardList = (props) => {
                 <button type={"button"} className={"btn btn-danger"} onClick={event => deleteRecord(event,"employees")}>Delete</button>
                 <button type={"button"} className={"btn btn-primary"} onClick={event => handleShow(1)}>Add Record</button>
                 <button type={"button"} className={"btn btn-info"} onClick={event => showDetails("employees")}>Show details</button>
-                <Modal
-                    show={show1}
-                    onHide={handleClose}
-                    backdrop="static"
-                    keyboard={false}
 
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Add Employee</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Container>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>employee_name </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <input type={"text"} onChange={event => onChangeHandler(1,"employee_name",event.target.value)}/>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>employee_surname </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <input type={"text"} onChange={event => onChangeHandler(1,"employee_surname",event.target.value)}/>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>employee_birthday (e.g. 2020-09-27) </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <input type={"text"} onChange={event => onChangeHandler(1,"employee_birthday",event.target.value)}/>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>employee_position  </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <input type={"text"} onChange={event => onChangeHandler(1,"employee_position",event.target.value)}/>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>employee_seniority  </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <input type={"number"} onChange={event => onChangeHandler(1,"employee_seniority",event.target.value)}/>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                        <Button variant="primary" onClick={event => handleSave("employees",emp)}>
-                            Save
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
-                <Modal
+                <RecordModal show={show1} title={"Add employees"} tableNo={1} onChangeHandler={onChangeHandler}
+                             myObject={emp} handleClose={handleClose} handleSave={handleSave}
+                             tableName={"employees"}/>
+
+                <DetailsModal
                     show={showDetails1}
-                    onHide={handleClose}
-                    backdrop="static"
-                    keyboard={false}
+                    handleClose={handleClose}
+                    title={"employee details"}
+                    myObject={selectedRow1}
+                />
 
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Employee Details</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Container>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow1)[0]} </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow1)[0]} </span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow1)[1]} </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow1)[1]} </span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow1)[2]} </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow1)[2]} </span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow1)[3]} </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow1)[3]} </span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow1)[4]}  </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow1)[4]} </span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow1)[5]}  </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow1)[5]} </span>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
             </div>
             <div className={"row"}>
 
@@ -541,123 +410,17 @@ const CardList = (props) => {
                 <button type={"button"} className={"btn btn-primary"} onClick={event => handleShow(2)}>Add Record</button>
                 <button type={"button"} className={"btn btn-info"} onClick={event => showDetails("shop_item")}>Show details</button>
 
-                <Modal
-                    show={show2}
-                    onHide={handleClose}
-                    backdrop="static"
-                    keyboard={false}
+                <RecordModal show={show2} title={"Add items"} tableNo={2} onChangeHandler={onChangeHandler}
+                             myObject={item} handleClose={handleClose} handleSave={handleSave}
+                             tableName={"shop_item"}/>
 
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Add Item</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Container>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>item_name </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <input type={"text"} onChange={event => onChangeHandler(2,"item_name", event.target.value)}/>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>item_price </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <input type={"number"} onChange={event => onChangeHandler(2,"item_price", event.target.value)}/>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>item_category </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <input type={"text"} onChange={event => onChangeHandler(2,"item_category", event.target.value)}/>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>item_color </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <input type={"text"} onChange={event => onChangeHandler(2,"item_color", event.target.value)}/>
-                                </Col>
-                            </Row>
-
-                        </Container>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                        <Button variant="primary" onClick={event => handleSave("shop_item",item)}>
-                            Save
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
-                <Modal
+                <DetailsModal
                     show={showDetails2}
-                    onHide={handleClose}
-                    backdrop="static"
-                    keyboard={false}
+                    handleClose={handleClose}
+                    title={"employee details"}
+                    myObject={selectedRow2}
+                />
 
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Item Details</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Container>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow2)[0]} </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow2)[0]} </span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow2)[1]} </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow2)[1]} </span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow2)[2]} </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow2)[2]} </span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow2)[3]} </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow2)[3]} </span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow2)[4]}  </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow2)[4]} </span>
-                                </Col>
-                            </Row>
-
-                        </Container>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
             </div>
             <div className={"row"}>
 
@@ -676,138 +439,17 @@ const CardList = (props) => {
                 <button type={"button"} className={"btn btn-primary"} onClick={event => handleShow(3)}>Add Record</button>
                 <button type={"button"} className={"btn btn-info"} onClick={event => showDetails("shop_transaction")}>Show details</button>
 
-                <Modal
-                    show={show3}
-                    onHide={handleClose}
-                    backdrop="static"
-                    keyboard={false}
+                <RecordModal show={show3} title={"Add transactions"} tableNo={3} onChangeHandler={onChangeHandler}
+                             myObject={trans} handleClose={handleClose} handleSave={handleSave}
+                             tableName={"shop_transaction"}/>
 
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Add Transaction</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Container>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>id_employee </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <input type={"number"}  onChange={event => onChangeHandler(3,"id_employee", event.target.value)}/>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>id_item </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <input type={"number"} onChange={event => onChangeHandler(3,"id_item",  event.target.value)}/>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>transaction_date (e.g. 2020-09-27) </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <input type={"text"} onChange={event => onChangeHandler(3,"transaction_date", event.target.value)}/>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>transaction_comment </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <input type={"text"} onChange={event => onChangeHandler(3,"transaction_comment", event.target.value)}/>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>transaction_method  </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <input type={"text"} onChange={event => onChangeHandler(3,"transaction_method", event.target.value)}/>
-                                </Col>
-                            </Row>
-
-                        </Container>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                        <Button variant="primary" onClick={event => handleSave("shop_transaction",trans)}>
-                            Save
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
-                <Modal
+                <DetailsModal
                     show={showDetails3}
-                    onHide={handleClose}
-                    backdrop="static"
-                    keyboard={false}
+                    handleClose={handleClose}
+                    title={"employee details"}
+                    myObject={selectedRow3}
+                />
 
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Transaction Details</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Container>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow3)[0]} </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow3)[0]} </span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow3)[1]} </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow3)[1]} </span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow3)[2]} </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow3)[2]} </span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow3)[3]} </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow3)[3]} </span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow3)[4]}  </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow3)[4]} </span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={5} md={5}>
-                                    <span className={"modal-label"}>{Object.keys(selectedRow3)[5]}  </span>
-                                </Col>
-                                <Col xs={5} md={4}>
-                                    <span className={"modal-label"}>{Object.values(selectedRow3)[5]} </span>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
             </div>
         </div>
     );
