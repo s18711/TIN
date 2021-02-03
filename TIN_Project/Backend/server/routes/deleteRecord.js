@@ -27,6 +27,7 @@ router.delete('/', function(req, res, next) {
     connection.query(`DELETE FROM ${tableName} WHERE ${columnName} = ${actualColumnValue} `, (err, rows, fields) => {
         if (err) {
             console.log(err);
+            res.status(400);
             res.send(err);
         }
         else {

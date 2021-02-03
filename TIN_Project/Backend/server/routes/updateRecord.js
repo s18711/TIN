@@ -31,6 +31,7 @@ router.put('/', function(req, res, next) {
     connection.query(`UPDATE ${tableName} SET ${columnName} = ${actualColumnValue} where ${whereName} = ${actualWhereValue}; `, (err, rows, fields) => {
         if (err) {
             console.log(err);
+            res.status(400);
             res.send(err);
         }
         else {

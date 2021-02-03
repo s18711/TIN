@@ -6,8 +6,11 @@ const mysql = require('mysql');
 router.get('/', function(req, res, next) {
     const connection = mysql.createConnection(utils);
     connection.connect((err) => {
-        if (err)
+        if (err){
+            res.status(400);
+            res.send(err);
             console.log(err);
+        }
         else
             console.log("connected ")
     });
@@ -17,6 +20,7 @@ router.get('/', function(req, res, next) {
     connection.query(`SELECT * FROM ${tableName}`, (err, rows, fields) => {
         if (err)
         {
+            res.status(400);
             res.send(err);
             console.log(err);
         }

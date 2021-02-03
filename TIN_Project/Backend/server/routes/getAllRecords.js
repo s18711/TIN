@@ -25,7 +25,11 @@ const getAllRecords = (sqlQueries,res,connection) => {
     for (let i = 0; i < sqlQueries.length; i++) {
         connection.query(sqlQueries[i], (err, rows, fields) => {
             if (err)
+            {
                 console.log(err);
+                res.status(400);
+                res.send(err);
+            }
             else {
                 results.push(rows);
                 //done this way because of non-blocking query function

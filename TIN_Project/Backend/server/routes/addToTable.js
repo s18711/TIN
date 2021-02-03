@@ -8,47 +8,79 @@ const Shop_transaction = require('../Models/Shop_transaction');
 
 router.post('/', function (req, res, next) {
 
-    const tableName = req.baseUrl.split("/")[2]; // getting tableName from URL
-    try {
+        const tableName = req.baseUrl.split("/")[2]; // getting tableName from URL
 
         const connection = mysql.createConnection(utils);
         connection.connect((err) => {
-            if (err)
+            if (err) {
+                res.status(400);
+                res.send(err);
                 console.log(err);
-            else
+            } else
                 console.log("connected ")
         });
 
         connection.beginTransaction((err) => {
-            if (err)
-                throw err;
-            const sqlStmt = `INSERT INTO tableName (key0, key1, key2, key3, key4) values ('value0','value1','value2','value3','value4')`;
-            if (tableName === "employees") {
-                const {employee_name, employee_surname, employee_birthday,employee_position,employee_seniority} = req.body;
-                const employee = new Employee(employee_name, employee_surname, employee_birthday,employee_position,employee_seniority);
-                performInsert(tableName, employee, connection, sqlStmt, res);
-
-            } else if (tableName === "shop_item") {
-                const {item_name, item_price,item_category,item_color} = req.body;
-                const shop_item = new Shop_item(item_name, item_price,item_category,item_color);
-                performInsert(tableName, shop_item, connection, sqlStmt, res);
-
-            } else if (tableName === "shop_transaction") {
-                const {id_employee, id_item, transaction_date,transaction_comment,transaction_method} = req.body;
-                const shop_transaction = new Shop_transaction(id_employee, id_item, transaction_date,transaction_comment,transaction_method);
-                performInsert(tableName, shop_transaction, connection, sqlStmt, res);
-
+            if (err) {
+                res.status(400);
+                res.send(err);
             } else {
-                throw "Incorrect table name"
+                const sqlStmt = `INSERT INTO tableName (key0, key1, key2, key3, key4) values ('value0','value1','value2','value3','value4')`;
+                if (tableName === "employees") {
+                    const {
+                        employee_name,
+                        employee_surname,
+                        employee_birthday,
+                        employee_position,
+                        employee_seniority
+                    } = req.body;
+
+                    try {
+                        const employee = new Employee(employee_name, employee_surname, employee_birthday, employee_position, employee_seniority);
+                        performInsert(tableName, employee, connection, sqlStmt, res);
+                    } catch (e) {
+                        res.status(400);
+                        res.send(e);
+                    }
+
+                } else if (tableName === "shop_item") {
+                    const {item_name, item_price, item_category, item_color} = req.body;
+                    try {
+                        const shop_item = new Shop_item(item_name, item_price, item_category, item_color);
+                        performInsert(tableName, shop_item, connection, sqlStmt, res);
+                    } catch (e) {
+                        res.status(400);
+                        res.send(e);
+                    }
+
+                } else if (tableName === "shop_transaction") {
+                    const {
+                        id_employee,
+                        id_item,
+                        transaction_date,
+                        transaction_comment,
+                        transaction_method
+                    } = req.body;
+
+                    try {
+
+                        const shop_transaction = new Shop_transaction(id_employee, id_item, transaction_date, transaction_comment, transaction_method);
+                        performInsert(tableName, shop_transaction, connection, sqlStmt, res);
+                    } catch (e) {
+                        res.status(400);
+                        res.send(e);
+                    }
+
+                } else {
+                    res.status(400);
+                    res.send("incorrect table name");
+                }
+
             }
-
         });
-    } catch (e) {
-        res.status(400);
-        res.send(e);
-    }
 
-});
+    }
+);
 module.exports = router;
 
 const performInsert = (tableName, model, connection, sqlStatement, res) => {
@@ -81,7 +113,8 @@ const performInsert = (tableName, model, connection, sqlStatement, res) => {
     connection.query(sqlString, (error, results, fields) => {
         if (error) {
             return connection.rollback(() => {
-                throw error;
+                res.status(400);
+                res.send(error);
             });
         } else {
 
@@ -89,7 +122,8 @@ const performInsert = (tableName, model, connection, sqlStatement, res) => {
             connection.commit((err) => {
                 if (err) {
                     return connection.rollback(() => {
-                        throw err;
+                        res.status(400);
+                        res.send(err);
                     });
                 }
                 console.log('success!');
